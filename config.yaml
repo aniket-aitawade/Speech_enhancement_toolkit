@@ -1,0 +1,19 @@
+directory: '/home/skdm/Aniket/Datasets/Voicebank_DEMAND'
+
+train_val_split: 0.9
+
+preprocessing:
+  batch_size: 10
+  frame_length: 512
+  frame_step: 256
+  n_fft: 512
+  abs: False
+  target_sr: 16000
+  duration: 2
+
+training:
+  batch_size: 32
+  epochs: 86
+  patience: 7
+  optimizer: RMSprop
+  learning_rate: 0.0002

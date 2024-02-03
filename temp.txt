@@ -1,0 +1,174 @@
+2024-02-02 21:22:37.690260: I tensorflow/core/util/port.cc:110] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2024-02-02 21:22:37.714655: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-02-02 21:22:38.049797: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-02-02 21:22:38.546401: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.561068: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.561218: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.581115: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.581275: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.581333: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.919279: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.919442: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.919502: I tensorflow/compiler/xla/stream_executor/cuda/cuda_gpu_executor.cc:996] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero. See more at https://github.com/torvalds/linux/blob/v6.0/Documentation/ABI/testing/sysfs-bus-pci#L344-L355
+2024-02-02 21:22:38.919560: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1635] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9672 MB memory:  -> device: 0, name: NVIDIA RTX A2000 12GB, pci bus id: 0000:01:00.0, compute capability: 8.6
+2024-02-02 21:22:39.289254: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.289374: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.289407: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.298009: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.298104: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.298136: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.329322: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.329419: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.329449: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.354625: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.354727: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.354768: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.363515: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.363607: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.363640: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.509349: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.509448: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.509480: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.523748: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.523831: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.523861: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.726209: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.726323: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.726356: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.758260: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.758355: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.758387: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.766883: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.766977: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.767008: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.789004: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.789093: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.789131: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.872968: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.873061: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.873094: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.881949: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.882043: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.882076: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.952158: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.952258: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.952291: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:39.974310: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:39.974406: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:39.974437: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.014795: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.014901: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.014931: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.028364: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.028450: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.028483: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.129823: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.129908: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.129951: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.149621: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.149723: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.149758: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.176883: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.176977: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.177010: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.185949: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.186031: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.186064: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:40.209677: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_2_grad_concat_split_2_split_dim' with dtype int32
+	 [[{{node gradients_split_2_grad_concat_split_2_split_dim}}]]
+2024-02-02 21:22:40.209781: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_grad_concat_split_split_dim' with dtype int32
+	 [[{{node gradients_split_grad_concat_split_split_dim}}]]
+2024-02-02 21:22:40.209821: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'gradients_split_1_grad_concat_split_1_split_dim' with dtype int32
+	 [[{{node gradients_split_1_grad_concat_split_1_split_dim}}]]
+2024-02-02 21:22:41.397394: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'inputs' with dtype float and shape [?,2,126,257,2]
+	 [[{{node inputs}}]]
+2024-02-02 21:22:42.170195: I tensorflow/compiler/xla/stream_executor/cuda/cuda_dnn.cc:424] Loaded cuDNN version 8600
+2024-02-02 21:22:42.837189: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:637] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2024-02-02 21:22:42.993521: I tensorflow/core/common_runtime/executor.cc:1197] [/device:CPU:0] (DEBUG INFO) Executor start aborting (this does not indicate an error and you can ignore this message): INVALID_ARGUMENT: You must feed a value for placeholder tensor 'inputs' with dtype float and shape [?,?,126,257,2]
+	 [[{{node inputs}}]]
+Traceback (most recent call last):
+  File "utils/evaluation.py", line 35, in <module>
+    model_output=model.predict(features,verbose=0)
+  File "/home/skdm/.local/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/skdm/.local/lib/python3.8/site-packages/keras/engine/training.py", line 2382, in predict
+    tmp_batch_outputs = self.predict_function(iterator)
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/util/traceback_utils.py", line 150, in error_handler
+    return fn(*args, **kwargs)
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 894, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/polymorphic_function/polymorphic_function.py", line 933, in _call
+    results = self._variable_creation_fn(*args, **kwds)
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/polymorphic_function/tracing_compiler.py", line 143, in __call__
+    return concrete_function._call_flat(
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/polymorphic_function/monomorphic_function.py", line 1757, in _call_flat
+    return self._build_call_outputs(self._inference_function.call(
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/polymorphic_function/monomorphic_function.py", line 381, in call
+    outputs = execute.execute(
+  File "/home/skdm/.local/lib/python3.8/site-packages/tensorflow/python/eager/execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+KeyboardInterrupt
