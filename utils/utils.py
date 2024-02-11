@@ -26,6 +26,24 @@ class TF_loss(tf.keras.losses.Loss):
     time_loss=tf.reduce_mean(tf.abs(tf.math.subtract(true_time,pred_time)))
     freq_loss=tf.reduce_mean(tf.abs(tf.math.subtract(y_true,y_pred)))
     return tf.math.add(4*time_loss,6*freq_loss)
+  
+class TF_loss_abs(tf.keras.losses.Loss):
+  def call(self,y_true,y_pred):
+    true=tf.complex(y_true,tf.zeros_like(y_true,dtype=tf.float32))
+    pred=tf.complex(y_pred,tf.zeros_like(y_pred,dtype=tf.float32))
+    
+    true_flipped=tf.math.conj(tf.experimental.numpy.flip(true,axis=-1))
+
+    true_full=tf.concat([true,true_flipped[:,:,:,1:-1]],axis=-1)
+    true_time=tf.matmul(true_full,idft_mat)
+    
+    pred_flipped=tf.math.conj(tf.experimental.numpy.flip(pred,axis=-1))
+    pred_full=tf.concat([pred,pred_flipped[:,:,:,1:-1]],axis=-1)
+    pred_time=tf.matmul(pred_full,idft_mat)
+
+    time_loss=tf.reduce_mean(tf.abs(tf.math.subtract(true_time,pred_time)))
+    freq_loss=tf.reduce_mean(tf.abs(tf.math.subtract(y_true,y_pred)))
+    return tf.math.add(4*time_loss,6*freq_loss)
 
 def scheduler(epoch, lr):
   if epoch < 10:

@@ -23,9 +23,9 @@ w2=open(os.path.join(output_dir,'val.txt'),'w+')
 w3=open(os.path.join(output_dir,'test.txt'),'w+')
 
 for audios in train_set:
-    w1.write(os.path.join(directory,'noisy_trainset_28spk_wav',audios)+' '+os.path.join(directory,'noisy_trainset_28spk_wav',audios)+'\n')
+    w1.write(os.path.join(directory,'noisy_trainset_28spk_wav',audios)+' '+os.path.join(directory,'clean_trainset_28spk_wav',audios)+'\n')
 for audios in val_set:
-    w2.write(os.path.join(directory,'noisy_trainset_28spk_wav',audios)+' '+os.path.join(directory,'noisy_trainset_28spk_wav',audios)+'\n')
+    w2.write(os.path.join(directory,'noisy_trainset_28spk_wav',audios)+' '+os.path.join(directory,'clean_trainset_28spk_wav',audios)+'\n')
 for audios in test_set:
     w3.write(os.path.join(directory,'noisy_testset_wav',audios)+' '+os.path.join(directory,'clean_testset_wav',audios)+'\n')
 
