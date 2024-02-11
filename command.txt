@@ -1,0 +1,2 @@
+docker run --runtime=nvidia -it -v /home/skdm/Aniket/speech_enhancement_toolkit_mlflow/:/home/speech_enhancement_toolkit se_toolkit:1.0
+docker run --runtime=nvidia -it -v /home:/home se_toolkit:1.0

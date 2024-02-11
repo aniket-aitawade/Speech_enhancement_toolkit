@@ -1,0 +1,2 @@
+_target_: tensorflow.keras.optimizers.RMSprop
+learning_rate: 0.0002

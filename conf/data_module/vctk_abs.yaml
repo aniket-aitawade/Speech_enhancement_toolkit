@@ -1,0 +1,25 @@
+train:
+  _target_: utils.preprocessing.dataloader
+  data_dir: 'data/train.txt'
+  batch_size: 10
+  frame_length: 512
+  hop_length: 256
+  n_fft: 512
+  abs: True
+  target_sr: 16000
+  duration: 2
+  frame_input: 126
+  center: True
+
+val:
+  _target_: utils.preprocessing.dataloader
+  data_dir: 'data/val.txt'
+  batch_size: 10
+  frame_length: 512
+  hop_length: 256
+  n_fft: 512
+  abs: True
+  target_sr: 16000
+  duration: 2
+  frame_input: 126
+  center: True

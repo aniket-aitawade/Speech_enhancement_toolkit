@@ -1,0 +1,9 @@
+_target_: models.DPTFSNET.trainer
+units: 3
+filters: 64
+layers: 4
+features: 32
+LSTM_embedder_frames: 3
+heads: 4
+latent_dim: 64
+dense_units: 32

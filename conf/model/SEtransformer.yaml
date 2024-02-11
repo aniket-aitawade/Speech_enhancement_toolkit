@@ -1,0 +1,2 @@
+_target_: models.SEtransformer.trainer
+n_fft: 512
