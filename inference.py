@@ -58,8 +58,8 @@ def test_model(path=args.path,header=args.header):
       result=sepm.composite(clean_speech=clean,processed_speech=enhanced,fs=config.data_module.train.target_sr)
       for i in range(len(result)):
         results[i].append(result[i])
-      output=audio_path[0].split('/')[-1]
-      sf.write(f'results/{output}',enhanced,config.data_module.train.target_sr)
+      # output=audio_path[0].split('/')[-1]
+      # sf.write(f'results/{output}',enhanced,config.data_module.train.target_sr)
       bar()
 
   mean_results=[]

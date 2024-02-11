@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 
 class modified_transformer(tf.keras.layers.Layer):
     def __init__(self,n_fft):
@@ -124,12 +125,31 @@ class discriminator(tf.keras.Model):
         return x5
 
 class ATT(tf.keras.Model):
-    def __init__(self,n_fft, *args, **kwargs):
+    def __init__(self,n_fft,TF_loss, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
         self.generator=SEtransformer(n_fft)
         self.discriminator=discriminator()
+        self.idft_mat=np.fft.ifft(np.eye(n_fft))
+        self.TF_loss=TF_loss
+
+    def get_TF_loss(self,y_true,y_pred):
+        true=tf.complex(y_true,tf.zeros_like(y_true,dtype=tf.float32))
+        pred=tf.complex(y_pred,tf.zeros_like(y_pred,dtype=tf.float32))
         
+        true_flipped=tf.math.conj(tf.experimental.numpy.flip(true,axis=-1))
+
+        true_full=tf.concat([true,true_flipped[:,:,1:-1]],axis=-1)
+        true_time=tf.matmul(true_full,self.idft_mat)
+        
+        pred_flipped=tf.math.conj(tf.experimental.numpy.flip(pred,axis=-1))
+        pred_full=tf.concat([pred,pred_flipped[:,:,1:-1]],axis=-1)
+        pred_time=tf.matmul(pred_full,self.idft_mat)
+
+        time_loss=tf.reduce_mean(tf.abs(tf.math.subtract(true_time,pred_time)))
+        freq_loss=tf.reduce_mean(tf.abs(tf.math.subtract(y_true,y_pred)))
+        return tf.math.add(4*time_loss,6*freq_loss)
+
     def compile(self,g_opt,d_opt,*args,**kwargs):
         super().compile(*args,**kwargs)
         
@@ -149,7 +169,10 @@ class ATT(tf.keras.Model):
             y_hat_real=self.discriminator(noisy,real,training=True)
             y_hat_fake=self.discriminator(noisy,fake,training=True)
             total_d_loss=tf.reduce_mean(tf.math.squared_difference(y_hat_real,1.))+tf.reduce_mean(tf.math.squared_difference(y_hat_fake,0.))
-            total_g_loss=tf.reduce_mean(tf.math.squared_difference(y_hat_fake,1.))+100*tf.reduce_mean(tf.abs(tf.subtract(fake,real)))
+            if self.TF_loss:
+                total_g_loss=tf.reduce_mean(tf.math.squared_difference(y_hat_fake,1.))+100*self.get_TF_loss(y_true=real,y_pred=fake)
+            else:
+                total_g_loss=tf.reduce_mean(tf.math.squared_difference(y_hat_fake,1.))+100*tf.reduce_mean(tf.abs(tf.subtract(fake,real)))
             
         d_grad=d_tape.gradient(total_d_loss,self.discriminator.trainable_variables)
         self.d_opt.apply_gradients(zip(d_grad,self.discriminator.trainable_variables))
@@ -183,13 +206,15 @@ class ATT(tf.keras.Model):
 class trainer():
     def __init__(self,
                  n_fft:int,
+                 TF_loss:bool,
                  input_shape:list=[1,124,257,2]):
         self.n_fft=n_fft
+        self.TF_loss=TF_loss
         self.input_shape=input_shape
     
     def pack_model(self,input_shape,optimizer,loss,metrics):
         self.input_shape=input_shape
-        SEmodel=ATT(n_fft=self.n_fft)
+        SEmodel=ATT(n_fft=self.n_fft,TF_loss=self.TF_loss)
         SEmodel.compile(g_opt=optimizer,d_opt=tf.keras.optimizers.RMSprop(learning_rate=0.0002))
         return SEmodel
 

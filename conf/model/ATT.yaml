@@ -1,2 +1,3 @@
 _target_: models.ATT.trainer
 n_fft: 512
+TF_loss: True
