@@ -20,14 +20,24 @@
 # experiment_name: SETransformer
 defaults:
   - _self_
-  - model: ATT
-  - training: ATT
-  - optimizers: RMSprop
+  - model: SEDPT
+  - training: SEDPT
+  - optimizers: adam
   - data_module: vctk_abs
-  - loss: mse
+  - loss: TF_loss_abs
   - override hydra/job_logging: disabled
   - override hydra/hydra_logging: disabled  
-experiment_name: ATT
+experiment_name: SEDPT
+# defaults:
+#   - _self_
+#   - model: ATT
+#   - training: ATT
+#   - optimizers: RMSprop
+#   - data_module: vctk_abs
+#   - loss: mse
+#   - override hydra/job_logging: disabled
+#   - override hydra/hydra_logging: disabled  
+# experiment_name: ATT
 hydra:  
   output_subdir: null  
   run:  
