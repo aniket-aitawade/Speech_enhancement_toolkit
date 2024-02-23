@@ -1,0 +1,18 @@
+_target_: models.DPTFSNET_abs.trainer
+units: 1
+filters: 10
+layers: 1
+features: 10
+LSTM_embedder_frames: 3
+heads: 4
+latent_dim: 32
+dense_units: 10
+
+# units: 3
+# filters: 64
+# layers: 4
+# features: 32
+# LSTM_embedder_frames: 3
+# heads: 4
+# latent_dim: 64
+# dense_units: 32

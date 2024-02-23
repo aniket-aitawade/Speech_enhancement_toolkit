@@ -58,8 +58,8 @@ class Custom_dataloader(tf.keras.utils.Sequence):
           noisy_stft=np.abs(noisy_stft)
           clean_stft=np.abs(clean_stft)
         else:
-          noisy_stft=np.stack([np.real(noisy_stft),np.imag(noisy_stft)],axis=-1)
-          clean_stft=np.stack([np.real(clean_stft),np.imag(clean_stft)],axis=-1)
+          noisy_stft=np.stack([np.abs(noisy_stft),np.angle(noisy_stft)],axis=-1)
+          clean_stft=np.stack([np.abs(clean_stft),np.angle(clean_stft)],axis=-1)
 
         return noisy_stft,clean_stft
     

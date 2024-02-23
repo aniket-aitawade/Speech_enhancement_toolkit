@@ -1,5 +1,15 @@
 # defaults:
 #   - _self_
+#   - model: DPTFSNET_abs
+#   - training: DPTFSNET_abs
+#   - optimizers: adam
+#   - data_module: vctk_abs
+#   - loss: TF_loss_abs
+#   - override hydra/job_logging: disabled
+#   - override hydra/hydra_logging: disabled  
+# experiment_name: DPTFSNET_abs
+# defaults:
+#   - _self_
 #   - model: DPTFSNET
 #   - training: DPTFSNET
 #   - optimizers: adam
@@ -14,20 +24,40 @@
 #   - training: SEtransformer
 #   - optimizers: adam
 #   - data_module: vctk_abs
-#   - loss: TF_loss_abs
+#   - loss: mse
 #   - override hydra/job_logging: disabled
 #   - override hydra/hydra_logging: disabled  
 # experiment_name: SETransformer
+# defaults:
+#   - _self_
+#   - model: SEtransformer2
+#   - training: SEtransformer2
+#   - optimizers: adam
+#   - data_module: vctk_abs
+#   - loss: TF_loss_abs
+#   - override hydra/job_logging: disabled
+#   - override hydra/hydra_logging: disabled  
+# experiment_name: SETransformer2
 defaults:
   - _self_
-  - model: SEDPT
-  - training: SEDPT
+  - model: SEtransformer3
+  - training: SEtransformer2
   - optimizers: adam
-  - data_module: vctk_abs
-  - loss: TF_loss_abs
+  - data_module: vctk
+  - loss: TF_loss_abs_angle
   - override hydra/job_logging: disabled
   - override hydra/hydra_logging: disabled  
-experiment_name: SEDPT
+experiment_name: SETransformer3
+# defaults:
+#   - _self_
+#   - model: SEDPT
+#   - training: SEDPT
+#   - optimizers: RMSprop
+#   - data_module: vctk_abs
+#   - loss: TF_loss_abs
+#   - override hydra/job_logging: disabled
+#   - override hydra/hydra_logging: disabled  
+# experiment_name: SEDPT
 # defaults:
 #   - _self_
 #   - model: ATT

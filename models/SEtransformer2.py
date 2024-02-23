@@ -5,60 +5,63 @@ class modified_transformer(tf.keras.Model):
         super().__init__()
         self.feature_size=feature_size
         
-        self.concat=tf.keras.layers.Concatenate(axis=1)
-        self.LSTM=tf.keras.layers.SimpleRNN(self.feature_size,return_state=False)
         self.Add=tf.keras.layers.Add()
         self.layernorm1=tf.keras.layers.LayerNormalization()
         self.layernorm2=tf.keras.layers.LayerNormalization()
-        self.layernorm3=tf.keras.layers.LayerNormalization()
         self.MultiHeadAttention=tf.keras.layers.MultiHeadAttention(heads,latent_dim)
 
-        if useConv:
-            self.layer1=tf.keras.layers.Conv1D(filters=filters,kernel_size=kernel_size,activation='relu',padding='same')
-            self.layer2=tf.keras.layers.Conv1D(filters=1,kernel_size=kernel_size,activation='relu',padding='same')
-        else:
-            self.layer1=tf.keras.layers.Dense(self.feature_size,activation='relu')
-            self.layer2=tf.keras.layers.Dense(self.feature_size,activation='relu')
+        self.GRU=tf.keras.layers.GRU(units=feature_size,activation='relu',return_sequences=True)
+        self.Dense=tf.keras.layers.Dense(units=feature_size)
         
     def call(self,inputs):
-        input1=tf.zeros(shape=[tf.shape(inputs)[0],2,self.feature_size])
-        input2=self.concat([input1,inputs])
+        x=inputs
+        x=self.MultiHeadAttention(x,x)
+        x=self.Add([x,inputs])
+        x=self.layernorm1(x)
+
+        x1=x
+        x=self.GRU(x)
+        x=self.Dense(x)
+        x=self.Add([x,x1])
+        x=self.layernorm2(x)
         
-        x1=tf.signal.frame(input2,frame_length=3,frame_step=1,axis=1)
-        x1=tf.reshape(x1,shape=[-1,3,self.feature_size])
-        x1=self.LSTM(x1)
-        x1=tf.reshape(x1,shape=[-1,tf.shape(inputs)[1],self.feature_size])
-        x1=self.Add([x1,inputs])
-        x1=self.layernorm1(x1)
-        
-        x2=self.MultiHeadAttention(x1,x1)
-        x2=self.Add([x2,x1])
-        x2=self.layernorm2(x2)
-        
-        x3=self.layer1(x2)
-        x4=self.layer2(x3)
-        
-        x5=self.Add([x2,x4])
-        x5=self.layernorm3(x5)
-        return x5
+        return x
 
 class SEtransformer(tf.keras.Model):
-    def __init__(self,units,feature_size,new_feature_size,heads,latent_dim,useConv,filters,kernel_size):
+    def __init__(self,units,input_shape,new_feature_size,heads,latent_dim,useConv,filters,kernel_size):
         super().__init__()
         self.units=units
         self.Dense1=tf.keras.layers.Dense(new_feature_size,activation='softmax')
-        self.Dense2=tf.keras.layers.Dense(feature_size,activation='relu')
-        self.modified_transformer=[]
+        self.Dense2=tf.keras.layers.Dense(input_shape[-1],activation='relu')
+        self.Add=tf.keras.layers.Add()
+
+        self.layernorm1=[]
+        self.layernorm2=[]
+        self.feature_transformer=[]
+        self.frames_transformer=[]
         for i in range(self.units):
-            self.modified_transformer.append(modified_transformer(new_feature_size,heads,latent_dim,useConv,filters,kernel_size))
+            self.feature_transformer.append(modified_transformer(new_feature_size,heads,latent_dim,useConv,filters,kernel_size))
+            self.frames_transformer.append(modified_transformer(input_shape[-2],heads,latent_dim,useConv,filters,kernel_size))
+            self.layernorm1.append(tf.keras.layers.LayerNormalization())
+            self.layernorm2.append(tf.keras.layers.LayerNormalization())
         
     def call(self, inputs):
         dim=tf.shape(inputs)
         inputs=tf.reshape(inputs,shape=[-1,dim[-2],dim[-1]])
         x=self.Dense1(inputs)
         for i in range(self.units):
-            x=self.modified_transformer[i](x)
+            x1=x
+            x=self.feature_transformer[i](x)
+            x=self.Add([x,x1])
+            x=self.layernorm1[i](x)
+            x=tf.transpose(x,perm=[0,2,1])
+            x1=x
+            x=self.frames_transformer[i](x)
+            x=self.Add([x,x1])
+            x=self.layernorm2[i](x)
+            x=tf.transpose(x,perm=[0,2,1])
         x=self.Dense2(x)
+        x=tf.multiply(inputs,x)
         x=tf.reshape(x,shape=[dim[0],dim[1],dim[2],dim[3]])
         return x
 

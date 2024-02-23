@@ -7,6 +7,7 @@ from utils import utils
 import mlflow
 from datetime import datetime
 import inference
+import validation
 
 print("Python version is",sys.version)
 print("Tensorflow version is",tf.__version__)
@@ -24,22 +25,39 @@ def main(config):
   optimizer=instantiate(config.optimizers)
   loss=instantiate(config.loss)
   SEmodel=trainer.pack_model(input_shape=shape,optimizer=optimizer,loss=loss,metrics='mse')
+  
+  if config.experiment_name != "ATT":
+    SEmodel.build(input_shape=shape)
+    print(SEmodel.summary())
+
+  # return
 
   if config.experiment_name =="SETransformer":
+    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
+  
+  elif config.experiment_name =="SETransformer2":
+    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
+  
+  elif config.experiment_name =="SETransformer3":
+    callbacks=[validation.validation(),utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
+  
+  elif config.experiment_name =="SEDPT":
     callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
   
   elif config.experiment_name =="ATT":
     callbacks=[utils.save_best_latest_model_ATT(),utils.tensorboard_callback()]
     
   elif config.experiment_name =="DPTFSNET":
-    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.Warmup_LR()]
+    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.Warmup_LR(k1=0.2, k2=4e-4, warmup=4000, d_model=32)]
+
+  elif config.experiment_name =="DPTFSNET_abs":
+    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.Warmup_LR(k1=0.2, k2=4e-4, warmup=4000, d_model=32)]
 
   processed_dataset_train=dataset.train.dataset
   processed_dataset_val=dataset.val.dataset
-  # processed_dataset_train=processed_dataset_train.take(5)
+  processed_dataset_train=processed_dataset_train.take(5)
   # processed_dataset_val=processed_dataset_val.take(1)
   history=SEmodel.fit(processed_dataset_train,
-                        validation_data=processed_dataset_val,
                         batch_size=config.training.batch_size,
                         epochs=config.training.epochs,
                         callbacks=callbacks)
