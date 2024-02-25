@@ -6,6 +6,7 @@ import soundfile as sf
 from alive_progress import alive_bar
 from hydra import compose, initialize
 from utils import sepm
+from utils import compute_metrics
 from statistics import mean
 import librosa
 import numpy as np
@@ -28,11 +29,12 @@ def test_model(path=args.path,header=args.header):
   # test=test[:2]
   
   #Load Model
-  model=tf.keras.models.load_model('./best_model',compile=False)
+  model=tf.keras.models.load_model('./checkpoints/epoch-99',compile=False)
 
   print("Model Prediction and evaluation is in progress")
-  results=[[],[],[],[],[]]
-  metric=['SSNR','PESQ','CSIG','CBAK','COVL']
+  results=[[],[],[],[],[],[]]
+  #metric=['SSNR','PESQ','CSIG','CBAK','COVL']
+  metric=['PESQ','CSIG','CBAK','COVL','SSNR','STOI']
   with alive_bar(len(test)) as bar:
     for audio_path in test:
       if config.data_module.train.abs:
@@ -55,7 +57,8 @@ def test_model(path=args.path,header=args.header):
       if header=='Hindi':
         enhanced=enhanced[:clean.shape[0]]
 
-      result=sepm.composite(clean_speech=clean,processed_speech=enhanced,fs=config.data_module.train.target_sr)
+      #result=sepm.composite(clean_speech=clean,processed_speech=enhanced,fs=config.data_module.train.target_sr)
+      result=compute_metrics.compute_metrics(cleanFile=clean, enhancedFile=enhanced, Fs=config.data_module.train.target_sr, path=0)
       for i in range(len(result)):
         results[i].append(result[i])
       # output=audio_path[0].split('/')[-1]

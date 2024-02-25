@@ -86,6 +86,7 @@ class LearningRateScheduler(tf.keras.callbacks.Callback):
         else:
            tf.keras.backend.set_value(self.model.optimizer.lr, current_lr*0.98)
         self.loss = logs['loss']
+        self.model.save(f'checkpoints/epoch-{epoch}')
 
 def early_stop_callback():
     return tf.keras.callbacks.EarlyStopping(

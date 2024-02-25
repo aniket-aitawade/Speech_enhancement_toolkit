@@ -11,15 +11,16 @@ from statistics import mean
 with initialize(version_base=None, config_path="conf"):
     config = compose(config_name="config")
 class validation(tf.keras.callbacks.Callback):
-    def __init__(self):
+    def __init__(self,freq):
         super(validation, self).__init__()
-        file=open('data/val.txt','r')
+        self.freq=freq
+        file=open('data/test.txt','r')
         data=file.readlines()
         file.close()
         self.val=[line.strip().split(' ') for line in data]
         
     def on_epoch_end(self, epoch, logs=None):
-        if epoch%5 != 0:
+        if epoch%self.freq != 0:
             return
         print("Model Prediction and evaluation is in progress")
         results=[[],[],[],[],[]]

@@ -7,8 +7,8 @@ train:
   n_fft: 512
   abs: False
   target_sr: 16000
-  duration: 4
-  frame_input: 251
+  duration: 2
+  frame_input: 124
   center: True
 
 val:
@@ -20,6 +20,6 @@ val:
   n_fft: 512
   abs: False
   target_sr: 16000
-  duration: 4
-  frame_input: 251
+  duration: 2
+  frame_input: 124
   center: True

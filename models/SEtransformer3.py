@@ -31,7 +31,7 @@ class SEtransformer(tf.keras.Model):
     def __init__(self,units,input_shape,new_feature_size,heads,latent_dim,useConv,filters,kernel_size):
         super().__init__()
         self.units=units
-        self.Dense1=tf.keras.layers.Dense(new_feature_size,activation='softmax')
+        self.Dense1=tf.keras.layers.Dense(new_feature_size,activation='relu')
         self.Dense2=tf.keras.layers.Dense(input_shape[-2],activation='relu')
         self.conv1=tf.keras.layers.Conv1D(filters=1,kernel_size=kernel_size,padding="same",activation="relu")
         self.conv2=tf.keras.layers.Conv1D(filters=2,kernel_size=kernel_size,padding="same",activation="relu")

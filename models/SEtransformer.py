@@ -4,9 +4,10 @@ class modified_transformer(tf.keras.Model):
     def __init__(self,feature_size,heads,latent_dim,useConv,filters,kernel_size):
         super().__init__()
         self.feature_size=feature_size
+        self.useConv=useConv
         
         self.concat=tf.keras.layers.Concatenate(axis=1)
-        self.LSTM=tf.keras.layers.SimpleRNN(self.feature_size,return_state=False)
+        self.LSTM=tf.keras.layers.LSTM(self.feature_size,return_state=False)
         self.Add=tf.keras.layers.Add()
         self.layernorm1=tf.keras.layers.LayerNormalization()
         self.layernorm2=tf.keras.layers.LayerNormalization()
@@ -14,8 +15,9 @@ class modified_transformer(tf.keras.Model):
         self.MultiHeadAttention=tf.keras.layers.MultiHeadAttention(heads,latent_dim)
 
         if useConv:
-            self.layer1=tf.keras.layers.Conv1D(filters=filters,kernel_size=kernel_size,activation='relu',padding='same')
-            self.layer2=tf.keras.layers.Conv1D(filters=1,kernel_size=kernel_size,activation='relu',padding='same')
+            self.layer1=tf.keras.layers.Conv2D(filters=filters,kernel_size=[kernel_size,kernel_size],activation='relu',padding='same')
+            self.layer2=tf.keras.layers.Conv2D(filters=filters,kernel_size=[kernel_size,kernel_size],activation='relu',padding='same')
+            self.layer3=tf.keras.layers.Conv2D(filters=1,kernel_size=[kernel_size,kernel_size],activation='relu',padding='same')
         else:
             self.layer1=tf.keras.layers.Dense(self.feature_size,activation='relu')
             self.layer2=tf.keras.layers.Dense(self.feature_size,activation='relu')
@@ -35,8 +37,15 @@ class modified_transformer(tf.keras.Model):
         x2=self.Add([x2,x1])
         x2=self.layernorm2(x2)
         
-        x3=self.layer1(x2)
-        x4=self.layer2(x3)
+        if self.useConv:
+            x3=tf.expand_dims(x2,axis=-1)
+            x3=self.layer1(x3)
+            x3=self.layer2(x3)
+            x3=self.layer3(x3)
+            x4=tf.squeeze(x3,axis=-1)
+        else:
+            x3=self.layer1(x2)
+            x4=self.layer2(x3)
         
         x5=self.Add([x2,x4])
         x5=self.layernorm3(x5)
@@ -49,17 +58,24 @@ class SEtransformer(tf.keras.Model):
         self.Dense1=tf.keras.layers.Dense(new_feature_size,activation='softmax')
         self.Dense2=tf.keras.layers.Dense(feature_size,activation='relu')
         self.modified_transformer=[]
+        self.norm=[]
         for i in range(self.units):
             self.modified_transformer.append(modified_transformer(new_feature_size,heads,latent_dim,useConv,filters,kernel_size))
+            self.norm.append(tf.keras.layers.LayerNormalization())
         
     def call(self, inputs):
         dim=tf.shape(inputs)
-        inputs=tf.reshape(inputs,shape=[-1,dim[-2],dim[-1]])
-        x=self.Dense1(inputs)
+        x=tf.reshape(inputs,shape=[-1,dim[-2],dim[-1]])
+        x=self.Dense1(x)
         for i in range(self.units):
+            x1=x
             x=self.modified_transformer[i](x)
+            x=tf.keras.layers.Add()([x,x1])
+            x=self.norm[i](x)
+
         x=self.Dense2(x)
         x=tf.reshape(x,shape=[dim[0],dim[1],dim[2],dim[3]])
+        x=tf.multiply(inputs,x)
         return x
 
 class trainer():

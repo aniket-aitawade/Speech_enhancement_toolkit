@@ -9,7 +9,7 @@ parser.add_argument("--output_dir",default="data")
 args=parser.parse_args()
 directory=args.vctk_path
 output_dir=args.output_dir
-val_spk=["p226","p287"]
+val_spk=[]#["p226","p287"]
 
 print("Data Preparation for VCTK Started")
 audios_train=os.listdir(os.path.join(directory,'noisy_trainset_28spk_wav'))

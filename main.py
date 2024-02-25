@@ -33,7 +33,7 @@ def main(config):
   # return
 
   if config.experiment_name =="SETransformer":
-    callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
+    callbacks=[validation.validation(5),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
   
   elif config.experiment_name =="SETransformer2":
     callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.LearningRateScheduler(0.5)]
@@ -54,13 +54,13 @@ def main(config):
     callbacks=[utils.save_best_model(),utils.save_latest_model(),utils.tensorboard_callback(),utils.early_stop_callback(),utils.Warmup_LR(k1=0.2, k2=4e-4, warmup=4000, d_model=32)]
 
   processed_dataset_train=dataset.train.dataset
-  processed_dataset_val=dataset.val.dataset
-  processed_dataset_train=processed_dataset_train.take(5)
+  # processed_dataset_val=dataset.val.dataset
+  # processed_dataset_train=processed_dataset_train.take(5)
   # processed_dataset_val=processed_dataset_val.take(1)
-  history=SEmodel.fit(processed_dataset_train,
-                        batch_size=config.training.batch_size,
-                        epochs=config.training.epochs,
-                        callbacks=callbacks)
+  # history=SEmodel.fit(processed_dataset_train,
+  #                       batch_size=config.training.batch_size,
+  #                       epochs=config.training.epochs,
+  #                       callbacks=callbacks)
   
   mean_results_ENG=inference.test_model(path='data/test.txt',header='English')
   mean_results_Hindi=inference.test_model(path='data/test_hindi.txt',header='Hindi')
@@ -76,7 +76,7 @@ def main(config):
   mlflow.log_param("Optimizer",config.optimizers)
   mlflow.log_param("Loss Function",config.loss)
   mlflow.log_param("Model details",config.model)
-  mlflow.log_artifact('best_model')
+  mlflow.log_artifact('checkpoints/epoch-99')
   for i in range(len(metric)): 
     mlflow.log_metric(f'English_{metric[i]}', mean_results_ENG[i])
     mlflow.log_metric(f'Hindi_{metric[i]}', mean_results_Hindi[i])
